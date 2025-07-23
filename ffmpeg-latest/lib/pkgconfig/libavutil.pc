@@ -1,0 +1,14 @@
+prefix=/local64/bin-video/ffmpegSHARED
+exec_prefix=${prefix}
+libdir=/local64/bin-video/ffmpegSHARED/lib
+includedir=/local64/bin-video/ffmpegSHARED/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 59.53.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -lm -LC:/media_suite/local64/lib/pkgconfig/../ -lvpl -lole32 -lgdi32 -luuid -lstdc++ -lOpenCL -LC:/media_suite/msys64/mingw64/lib -lssl -lcrypto -lws2_32 -lgdi32 -lcrypt32 -luser32 -lbcrypt -latomic -pthread -ldl
+Cflags: -I${includedir}

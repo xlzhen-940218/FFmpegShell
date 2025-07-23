@@ -1,0 +1,14 @@
+prefix=/local64/bin-video/ffmpegSHARED
+exec_prefix=${prefix}
+libdir=/local64/bin-video/ffmpegSHARED/lib
+includedir=/local64/bin-video/ffmpegSHARED/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 10.6.101
+Requires: 
+Requires.private: libswscale >= 8.13.100, libavformat >= 61.9.102, libavcodec >= 61.28.100, libswresample >= 5.4.100, libavutil >= 59.53.100
+Conflicts:
+Libs: -L${libdir}  -lavfilter 
+Libs.private: -pthread -lm -latomic -LC:/media_suite/local64/lib -lbs2b -lm -LC:/media_suite/local64/lib -lmysofa -lz -lm -lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite -LC:/media_suite/local64/lib -lharfbuzz -lm -lfreetype -LC:/media_suite/msys64/mingw64/lib -lbz2 -LC:/media_suite/local64/lib -lfribidi -LC:/media_suite/local64/lib -lplacebo -lm -lshlwapi -lversion -lshaderc_combined -lspirv-cross -lvulkan -lcfgmgr32 -LC:/media_suite/msys64/mingw64/lib -llcms2 -llcms2_fast_float -lm -pthread -ldovi -lkernel32 -ladvapi32 -lntdll -luserenv -lws2_32 -ldbghelp -lkernel32 -ladvapi32 -lntdll -luserenv -lws2_32 -ldbghelp -LC:/media_suite/local64/lib -lvmaf -pthread -lm -LC:/media_suite/local64/lib -ltesseract -lregex -lexpat -llzma -lzstd -llz4 -lb2 -lbz2 -lz -lbcrypt -lcrypto -lws2_32 -lgdi32 -lcrypt32 -lpthread -fopenmp -lgomp -lleptonica -lz -LC:/media_suite/local64/lib -lpng16 -lz -ljpeg -LC:/media_suite/local64/lib -lm -lz -ldeflate -llzma -lzstd -LC:/media_suite/local64/lib -lwebpmux -lwebp -lsharpyuv -LC:/media_suite/msys64/mingw64/lib -larchive -lregex -lexpat -llz4 -lb2 -lbz2 -lbcrypt -lws2_32 -lcrypto -lws2_32 -lgdi32 -lcrypt32 -liconv -ltiff -lm -lz -ldeflate -ljpeg -llzma -lzstd -LC:/media_suite/local64/lib -lass -liconv -lgdi32 -lfontconfig -LC:/media_suite/msys64/mingw64/lib -lexpat -lharfbuzz -lm -lfribidi -lfreetype -lbz2 -LC:/media_suite/msys64/mingw64/lib -lzmq -lstdc++ -liphlpapi -lpthread -lws2_32 -lsodium -lpthread -pthread -LC:/media_suite/local64/lib -lzimg -lstdc++ -lglslang -lMachineIndependent -lGenericCodeGen -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm -lOpenCL -LC:/media_suite/local64/lib -lfontconfig -lfreetype -LC:/media_suite/msys64/mingw64/lib -lbz2 -lexpat -LC:/media_suite/local64/lib -lfreetype -LC:/media_suite/msys64/mingw64/lib -lbz2 -ldl -LC:/media_suite/local64/lib/pkgconfig/../ -lvpl -lole32 -lgdi32 -luuid -lstdc++
+Cflags: -I${includedir}

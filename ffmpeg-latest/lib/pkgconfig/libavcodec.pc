@@ -1,0 +1,14 @@
+prefix=/local64/bin-video/ffmpegSHARED
+exec_prefix=${prefix}
+libdir=/local64/bin-video/ffmpegSHARED/lib
+includedir=/local64/bin-video/ffmpegSHARED/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 61.28.100
+Requires: 
+Requires.private: libswresample >= 5.4.100, libavutil >= 59.53.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -LC:/media_suite/local64/lib -lvpx -lm -lm -lpthread -LC:/media_suite/local64/lib -lvpx -lm -lm -lpthread -LC:/media_suite/local64/lib -lvpx -lm -lm -lpthread -LC:/media_suite/local64/lib -lvpx -lm -lm -lpthread -LC:/media_suite/local64/lib -lwebpmux -lwebp -lsharpyuv -pthread -lm -latomic -llzma -LC:/media_suite/local64/lib -ldav1d -LC:/media_suite/local64/lib -luavs3d -lm -lpthread -LC:/media_suite/local64/lib -lvvdec C:/media_suite/msys64/mingw64/lib/libstdc++.a -lmingw32 -lgcc -lmingwex -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmingwex -lkernel32 -LC:/media_suite/local64/lib -lzvbi -lpthread -lm -lws2_32 -liconv -lpng -lz -lglslang -lMachineIndependent -lGenericCodeGen -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm -lsnappy -lstdc++ -LC:/media_suite/local64/lib -laom -lcodec2 -LC:/media_suite/local64/lib -lfdk-aac -lgsm -lilbc -pthread -LC:/media_suite/local64/lib -ljxl -lm -lstdc++ -lhwy -LC:/media_suite/msys64/mingw64/lib -lbrotlienc -lbrotlidec -lbrotlicommon -ljxl_cms -lm -lstdc++ -llcms2 -llcms2_fast_float -lm -pthread -LC:/media_suite/local64/lib -ljxl_threads -lm -LC:/media_suite/local64/lib -llc3 -lm -lmp3lame -lm -LC:/media_suite/msys64/mingw64/lib -lopenjp2 -lm -LC:/media_suite/local64/lib -lopus -LC:/media_suite/local64/lib -lrav1e -lkernel32 -ladvapi32 -lntdll -luserenv -lws2_32 -ldbghelp -Wl,--allow-multiple-definition -Wl,--allow-multiple-definition -Wl,--allow-multiple-definition -Wl,--allow-multiple-definition -Wl,--allow-multiple-definition -LC:/media_suite/local64/lib -lm -lshine -LC:/media_suite/local64/lib -lspeex -LC:/media_suite/local64/lib -lSvtAv1Enc -ltheoraenc -ltheoradec -logg -ltwolame -LC:/media_suite/local64/lib -lvorbis -lm -logg -LC:/media_suite/local64/lib -lvorbisenc -lvorbis -lm -logg -LC:/media_suite/local64/lib -lvvenc C:/media_suite/msys64/mingw64/lib/libstdc++.a -lmingw32 -lgcc -lmingwex -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmingwex -lkernel32 -LC:/media_suite/local64/lib -lwebp -lsharpyuv -LC:/media_suite/local64/lib -lSvtHevcEnc -LC:/media_suite/msys64/mingw64/lib -lopenh264 -pthread -lm -LC:/media_suite/local64/lib -lkvazaar -lpthread -lole32 -luser32 -LC:/media_suite/msys64/mingw64/lib -lz -ldl -LC:/media_suite/local64/lib/pkgconfig/../ -lvpl -lole32 -lgdi32 -luuid -lstdc++
+Cflags: -I${includedir}

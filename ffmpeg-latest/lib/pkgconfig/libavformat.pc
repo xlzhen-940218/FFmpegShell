@@ -1,0 +1,14 @@
+prefix=/local64/bin-video/ffmpegSHARED
+exec_prefix=${prefix}
+libdir=/local64/bin-video/ffmpegSHARED/lib
+includedir=/local64/bin-video/ffmpegSHARED/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 61.9.102
+Requires: 
+Requires.private: libavcodec >= 61.28.100, libswresample >= 5.4.100, libavutil >= 59.53.100
+Conflicts:
+Libs: -L${libdir}  -lavformat 
+Libs.private: -lm -latomic -LC:/media_suite/local64/lib -lxml2 -liconv -lm -lbcrypt -ldl -lbz2 -LC:/media_suite/local64/lib -lgme -lstdc++ -lz -LC:/media_suite/msys64/mingw64/lib -lmodplug -lstdc++ -lm -LC:/media_suite/local64/lib -lopenmpt -lole32 -lrpcrt4 -lrpcrt4 -lstdc++ -L/mingw64/lib -lchromaprint -LC:/media_suite/local64/lib -lbluray -lxml2 -liconv -lm -lbcrypt -ldl -LC:/media_suite/msys64/mingw64/lib -lz -LC:/media_suite/msys64/mingw64/lib -lssl -lcrypto -lws2_32 -lgdi32 -lcrypt32 -LC:/media_suite/local64/lib -lrist -lws2_32 -liphlpapi -pthread -LC:/media_suite/msys64/mingw64/lib -lcjson -lm -LC:/media_suite/local64/lib -lrtmp -lgmp -lws2_32 -lwinmm -lgdi32 -lgnutls -lws2_32 -lws2_32 -lgmp -latomic -ladvapi32 -lcrypt32 -lncrypt -lbcrypt -lcrypt32 -LC:/media_suite/msys64/mingw64/lib -ltasn1 -lz -lbrotlienc -lbrotlidec -lbrotlicommon -lzstd -lhogweed -lgmp -lnettle -LC:/media_suite/local64/lib -lsrt -lwsock32 -lws2_32 C:/media_suite/msys64/mingw64/lib/libstdc++.a -lmingw32 -lgcc -lmingwex -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmingwex -lkernel32 -LC:/media_suite/msys64/mingw64/lib -lssl -lcrypto -lws2_32 -lgdi32 -lcrypt32 -LC:/media_suite/msys64/mingw64/lib -lzmq -lstdc++ -liphlpapi -lpthread -lws2_32 -lsodium -lpthread -pthread -lws2_32
+Cflags: -I${includedir}
