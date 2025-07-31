@@ -3260,6 +3260,34 @@ int of_open(const OptionsContext *o, const char *filename, Scheduler *sch)
     mux->limit_filesize    = o->limit_filesize;
     av_dict_copy(&mux->opts, o->g->format_opts, 0);
 
+    mux->encrypt_data = o->data_encrypt;
+    if (mux->encrypt_data) {
+        FILE* KEY_FILE;
+        fopen_s(&KEY_FILE, "KEY", "rb");
+        if (KEY_FILE) {
+            size_t len = fread(&mux->encrypt_key, sizeof mux->encrypt_key[0], 16, KEY_FILE);
+            if (len == 16) {
+                len = fread(&mux->encrypt_nonce, sizeof mux->encrypt_nonce[0], 8, KEY_FILE);
+                if (len == 8) {
+                    av_log(mux, AV_LOG_INFO, "encrypt video data enabled!");
+
+                }
+                else {
+                    av_log(mux, AV_LOG_ERROR, "encrypt nonce length less 8!");
+                    mux->encrypt_data = 0;
+                }
+            }
+            else {
+                av_log(mux, AV_LOG_ERROR, "encrypt key length less 16!");
+                mux->encrypt_data = 0;
+            }
+        }
+        else {
+            av_log(mux, AV_LOG_ERROR, "encrypt key file not exist!");
+            mux->encrypt_data = 0;
+        }
+    }
+
     if (!strcmp(filename, "-"))
         filename = "pipe:";
 

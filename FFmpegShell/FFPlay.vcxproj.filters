@@ -27,6 +27,9 @@
     <ClCompile Include="fftools\cmdutils.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="encrypt.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fftools\ffplay_renderer.h">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="fftools\cmdutils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="encrypt.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

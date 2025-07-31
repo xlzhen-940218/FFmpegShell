@@ -109,6 +109,9 @@ typedef struct Muxer {
 
     SyncQueue              *sq_mux;
     AVPacket               *sq_pkt;
+    int                     encrypt_data;
+    uint8_t                 encrypt_key[16];
+    uint8_t                 encrypt_nonce[8];
 } Muxer;
 
 int mux_check_init(void *arg);

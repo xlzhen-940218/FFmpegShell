@@ -4,8 +4,7 @@
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>
-    </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "C:\Users\xiong\Videos\2025-06-05 17-48-59.output.mkv" -c:v copy -c:a copy  -encrypt_data:1 "C:\Users\xiong\Videos\2025-06-05 17-48-59.decrypt.mkv" -y</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

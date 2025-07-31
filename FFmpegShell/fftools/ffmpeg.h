@@ -198,6 +198,7 @@ typedef struct OptionsContext {
     int audio_disable;
     int subtitle_disable;
     int data_disable;
+    int data_encrypt;
 
     // keys are stream indices
     AVDictionary *streamid;

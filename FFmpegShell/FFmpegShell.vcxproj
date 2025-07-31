@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="config_components.h" />
+    <ClInclude Include="encrypt.h" />
     <ClInclude Include="fftools\cmdutils.h" />
     <ClInclude Include="fftools\ffmpeg.h" />
     <ClInclude Include="fftools\ffmpeg_mux.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="fftools\thread_queue.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="encrypt.c" />
     <ClCompile Include="fftools\cmdutils.c" />
     <ClCompile Include="fftools\ffmpeg.c" />
     <ClCompile Include="fftools\ffmpeg_dec.c" />

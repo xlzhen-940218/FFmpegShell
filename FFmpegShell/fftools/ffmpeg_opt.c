@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ffmpeg option parsing
  *
  * This file is part of FFmpeg.
@@ -1991,6 +1991,8 @@ const OptionDef options[] = {
         .u1.name_canon = "codec", },
     { "dn", OPT_TYPE_BOOL, OPT_DATA | OPT_OFFSET | OPT_INPUT | OPT_OUTPUT,
         { .off = OFFSET(data_disable) }, "disable data" },
+    { "encrypt_data", OPT_TYPE_BOOL, OPT_DATA | OPT_OFFSET | OPT_INPUT | OPT_OUTPUT,
+        {.off = OFFSET(data_encrypt) }, "encrypt data" },
 
 #if CONFIG_VAAPI
     { "vaapi_device", OPT_TYPE_FUNC, OPT_FUNC_ARG | OPT_EXPERT,

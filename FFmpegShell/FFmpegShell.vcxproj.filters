@@ -51,6 +51,9 @@
     <ClInclude Include="config_components.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="encrypt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fftools\ffmpeg.c">
@@ -96,6 +99,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="fftools\thread_queue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="encrypt.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

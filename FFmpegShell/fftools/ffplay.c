@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2003 Fabrice Bellard
  *
  * This file is part of FFmpeg.
@@ -57,6 +57,8 @@
 #include "cmdutils.h"
 #include "ffplay_renderer.h"
 #include "opt_common.h"
+
+#include "../encrypt.h"
 
 const char program_name[] = "ffplay";
 const int program_birth_year = 2003;
@@ -351,6 +353,7 @@ static int filter_nbthreads = 0;
 static int enable_vulkan = 0;
 static char *vulkan_params = NULL;
 static const char *hwaccel = NULL;
+static int encrypt_data = 0;
 
 /* current context */
 static int is_full_screen;
@@ -2832,6 +2835,35 @@ static int read_thread(void *arg)
     SDL_mutex *wait_mutex = SDL_CreateMutex();
     int scan_all_pmts_set = 0;
     int64_t pkt_ts;
+    uint8_t encrypt_key[16];
+    uint8_t encrypt_nonce[8];
+
+    if (encrypt_data) {
+        FILE* KEY_FILE;
+        fopen_s(&KEY_FILE, "KEY", "rb");
+        if (KEY_FILE) {
+            size_t len = fread(&encrypt_key, sizeof encrypt_key[0], 16, KEY_FILE);
+            if (len == 16) {
+                len = fread(&encrypt_nonce, sizeof encrypt_nonce[0], 8, KEY_FILE);
+                if (len == 8) {
+                    av_log(NULL, AV_LOG_INFO, "encrypt video data enabled!");
+                    
+                }
+                else {
+                    av_log(NULL, AV_LOG_ERROR, "encrypt nonce length less 8!");
+                    encrypt_data = 0;
+                }
+            }
+            else {
+                av_log(NULL, AV_LOG_ERROR, "encrypt key length less 16!");
+                encrypt_data = 0;
+            }
+        }
+        else {
+            av_log(NULL, AV_LOG_ERROR, "encrypt key file not exist!");
+            encrypt_data = 0;
+        }
+    }
 
     if (!wait_mutex) {
         av_log(NULL, AV_LOG_FATAL, "SDL_CreateMutex(): %s\n", SDL_GetError());
@@ -3111,6 +3143,11 @@ static int read_thread(void *arg)
             continue;
         } else {
             is->eof = 0;
+        }
+        if (pkt && pkt->buf && encrypt_data) {
+            int protected_size = 64; // 保护前64字节
+            int encrypt_size = pkt->size - protected_size;
+            tea_ctr_encrypt(pkt->data + protected_size, encrypt_size, encrypt_key, encrypt_nonce);
         }
         /* check if packet is in play range specified by user, then queue, otherwise discard */
         stream_start_time = ic->streams[pkt->stream_index]->start_time;
@@ -3707,6 +3744,7 @@ static const OptionDef options[] = {
     { "enable_vulkan",      OPT_TYPE_BOOL,            0, { &enable_vulkan }, "enable vulkan renderer" },
     { "vulkan_params",      OPT_TYPE_STRING, OPT_EXPERT, { &vulkan_params }, "vulkan configuration using a list of key=value pairs separated by ':'" },
     { "hwaccel",            OPT_TYPE_STRING, OPT_EXPERT, { &hwaccel }, "use HW accelerated decoding" },
+    { "encrypt_data",       OPT_TYPE_BOOL,            0, { &encrypt_data }, "encrypt data", "" },
     { NULL, },
 };
 

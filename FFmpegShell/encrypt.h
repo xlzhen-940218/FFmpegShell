@@ -1,0 +1,13 @@
+﻿
+#include <stdint.h>
+#include <string.h>
+
+//// 16字节密钥 (128位)
+//static const uint8_t encrypt_key[16] = { 0x01,0x23,0x45,0x67,0x89,0xAB,0xCD,0xEF,
+//                   0xFE,0xDC,0xBA,0x98,0x76,0x54,0x32,0x10 };
+//
+//// 8字节随机数 (计数器初始值)
+//static const uint8_t encrypt_nonce[8] = { 0xAA,0xBB,0xCC,0xDD,0xEE,0xFF,0x00,0x11 };
+
+static void tea_encrypt(uint32_t v[2], const uint32_t k[4]);
+void tea_ctr_encrypt(uint8_t* data, size_t len, const uint8_t key[16], const uint8_t nonce[8]);
