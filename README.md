@@ -12,6 +12,7 @@ FFmpegShell 是一个旨在帮助开发者在 Visual Studio 2022 环境下成功
   * **Visual Studio 2022 兼容:** 提供针对 Visual Studio 2022 优化的项目配置，简化编译过程。
   * **明确的依赖管理:** 明确指出所需的 FFmpeg 7.1 和 SDL2 2.32.8 库版本，减少版本不匹配导致的问题。
   * **开箱即用:** 按照指南操作，即可快速搭建 FFmpeg 开发环境并运行示例。
+  * **新增 TEA 加密功能:** 项目现在集成了 **TEA (Tiny Encryption Algorithm) 加密**功能，允许你在 FFmpeg 命令中直接对视频进行加密和解密，并且 **FFplay 也支持直接播放加密视频**。
 
 -----
 
@@ -37,7 +38,7 @@ FFmpegShell 是一个旨在帮助开发者在 Visual Studio 2022 环境下成功
 首先，您需要获取 FFmpegShell 的项目文件。这通常意味着从 Git 仓库克隆项目或下载项目压缩包。
 
 ```bash
-git clone [FFmpegShell 项目的 Git 仓库地址，如果提供]
+git clone https://github.com/xlzhen-940218/FFmpegShell.git
 ```
 
 ### 2\. 配置依赖库路径 📂
@@ -65,13 +66,19 @@ git clone [FFmpegShell 项目的 Git 仓库地址，如果提供]
 1.  在 Visual Studio 菜单栏中，选择 **“生成 (Build)”** -\> **“重新生成解决方案 (Rebuild Solution)”**。
 2.  观察“输出”窗口，确保没有编译错误。
 
-### 4\. 运行示例 🏃‍♂️
+### 4\. 运行示例与 TEA 加密功能 🏃‍♂️
 
 编译成功后，您就可以运行 FFmpeg、FFplay 和 FFprobe 的示例程序了。
 
-  * **FFmpeg:** 通常是一个命令行工具，您可以设置命令行参数来执行各种媒体处理任务（例如转码、提取信息等）。
-  * **FFplay:** 会打开一个播放窗口，您可以指定视频或音频文件路径进行播放。
-  * **FFprobe:** 也是一个命令行工具，用于分析媒体文件的信息并输出详细元数据。
+  * **FFmpeg (视频加密/解密):**
+      * 在 FFmpeg 命令中添加参数 `-encrypt_data:1` 即可启用 TEA 加密或解密功能。
+      * 例如，加密视频：`ffmpeg -i input.mp4 -encrypt_data:1 output_encrypted.mp4`
+      * 解密视频：`ffmpeg -i input_encrypted.mp4 -encrypt_data:1 output_decrypted.mp4`
+  * **FFplay (播放加密视频):**
+      * FFplay 现在可以直接播放经过 TEA 加密的视频文件，同样只需在命令中添加参数 `-encrypt_data:1`。
+      * 例如：`ffplay -encrypt_data:1 encrypted_video.mp4`
+  * **FFprobe:**
+      * 作为命令行工具，用于分析媒体文件的信息并输出详细元数据。它不受加密功能影响。
 
 在 Visual Studio 中，您可以右键点击每个项目，选择 **“设为启动项目 (Set as StartUp Project)”**，然后点击 **“本地 Windows 调试器 (Local Windows Debugger)”** 按钮运行。对于命令行工具，您可能需要在项目属性的“调试”选项中配置“命令行参数”。
 
@@ -90,4 +97,4 @@ git clone [FFmpegShell 项目的 Git 仓库地址，如果提供]
 
 如果您在使用 FFmpegShell 项目时遇到问题，或者有任何改进建议，欢迎提出。您的贡献将帮助更多开发者受益！
 
-通过 FFmpegShell，您可以更轻松地踏上 FFmpeg 开发之旅，释放其在音视频处理领域的无限潜力！
+通过 FFmpegShell，您可以更轻松地踏上 FFmpeg 开发之旅，体验便捷的音视频处理和 now **TEA 加密**功能！
